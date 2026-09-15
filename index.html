@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prabhakar Joshi — Senior Salesforce Engineer</title>
+<meta name="description" content="Senior Salesforce Engineer — 9 years building integration-heavy solutions in fintech, payments, and healthcare.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF8;
+    --panel:#F1EFE7;
+    --ink:#1A1F2B;
+    --ink-soft:#4A5060;
+    --line:#DEDBD1;
+    --teal:#2B6E5E;
+    --teal-deep:#1E4F43;
+    --gold:#C9A227;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  ::selection{background:var(--teal); color:var(--paper);}
+
+  /* Skip link for accessibility */
+  .skip-link{
+    position:absolute; left:-9999px; top:0;
+    background:var(--ink); color:var(--paper); padding:10px 16px; z-index:100;
+  }
+  .skip-link:focus{ left:16px; top:16px; }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,250,248,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .nav-name{ font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; }
+  .nav-links{ display:flex; gap:28px; list-style:none; margin:0; padding:0; }
+  .nav-links a{ text-decoration:none; font-size:0.92rem; color:var(--ink-soft); transition:color .15s; }
+  .nav-links a:hover{ color:var(--teal-deep); }
+  .nav-toggle{ display:none; }
+
+  /* ===== HERO ===== */
+  header.hero{
+    padding:96px 0 88px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow-role{
+    font-size:0.95rem;
+    color:var(--teal-deep);
+    margin-bottom:18px;
+    font-weight:500;
+  }
+  h1.headline{
+    font-size:clamp(2.2rem, 4vw, 3rem);
+    line-height:1.1;
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    max-width:58ch;
+  }
+  .hero-actions{
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:2px;
+    font-size:0.95rem;
+    text-decoration:none;
+    font-weight:500;
+    border:1px solid var(--ink);
+    transition:background .15s, color .15s;
+  }
+  .btn-solid{ background:var(--ink); color:var(--paper); }
+  .btn-solid:hover{ background:var(--teal-deep); border-color:var(--teal-deep); }
+  .btn-ghost{ border-color:var(--line); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+
+  /* tool badges */
+  .tool-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
+  }
+  .tool-badge{
+    border:1px solid var(--line);
+    background:var(--panel);
+    border-radius:4px;
+    padding:18px 8px;
+    text-align:center;
+  }
+  .tool-glyph{
+    width:38px; height:38px;
+    margin:0 auto 10px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    background:var(--paper);
+    border:1.5px solid var(--teal);
+    overflow:hidden;
+    position:relative;
+  }
+  .tool-logo-img{
+    width:22px; height:22px;
+    object-fit:contain;
+  }
+  .tool-glyph-fallback{
+    display:none;
+    align-items:center; justify-content:center;
+    width:100%; height:100%;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:0.82rem;
+    color:var(--teal-deep);
+  }
+  .tool-name{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+
+  /* ===== STATS ===== */
+  .stats{
+    padding:52px 0;
+    border-bottom:1px solid var(--line);
+    background:var(--panel);
+  }
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+  }
+  .stat-num{
+    font-family:'Fraunces', serif;
+    font-size:2.1rem;
+    font-weight:600;
+    color:var(--teal-deep);
+  }
+  .stat-label{
+    margin-top:6px;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    max-width:22ch;
+  }
+
+  /* ===== SECTION HEADINGS ===== */
+  section{ padding:80px 0; }
+  .section-head{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:40px;
+    margin-bottom:48px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:20px;
+  }
+  .section-head h2{ font-size:1.7rem; }
+  .section-head .section-note{
+    color:var(--ink-soft);
+    font-size:0.98rem;
+    align-self:end;
+    max-width:52ch;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    column-gap:40px;
+    position:relative;
+  }
+  .tl-rail{
+    grid-column:1;
+    position:relative;
+  }
+  .tl-item{
+    display:contents;
+  }
+  .tl-meta{
+    padding-bottom:56px;
+    position:relative;
+  }
+  .tl-meta::before{
+    content:'';
+    position:absolute;
+    left:0; top:6px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--teal);
+    transform:translateX(-50%);
+  }
+  .tl-role-col{
+    position:relative;
+    padding-left:40px;
+    border-left:1px solid var(--line);
+  }
+  .tl-meta{ padding-right:0; text-align:right; padding-left:0; }
+  .tl-dates{ font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:var(--ink-soft); }
+  .tl-company{ font-weight:600; margin-top:4px; font-size:0.98rem; }
+
+  .tl-role-block{ padding-bottom:56px; }
+  .tl-role-block h3{ font-size:1.2rem; margin-bottom:14px; }
+  .tl-role-block ul{ margin:0; padding-left:18px; }
+  .tl-role-block li{ margin-bottom:10px; color:var(--ink-soft); font-size:0.97rem; }
+  .tl-role-block li::marker{ color:var(--teal); }
+  .tl-role-block li strong{ color:var(--ink); font-weight:600; }
+
+  /* connecting rail line */
+  .tl-rail-line{
+    position:absolute;
+    left:220px;
+    top:6px;
+    bottom:56px;
+    width:1px;
+    background:var(--line);
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:28px 48px;
+  }
+  .skill-card{
+    border-top:2px solid var(--teal);
+    padding-top:16px;
+  }
+  .skill-card h3{
+    font-size:1.02rem;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .skill-tags{
+    display:flex; flex-wrap:wrap; gap:8px;
+  }
+  .skill-tags span{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    background:var(--panel);
+    padding:5px 10px;
+    border-radius:2px;
+  }
+
+  /* ===== CERTS + EDU ===== */
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  .cred-list{ list-style:none; margin:0; padding:0; }
+  .cred-list li{
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    font-size:0.95rem;
+  }
+  .cred-list li:first-child{ padding-top:0; }
+  .cred-name{ font-weight:500; }
+  .cred-meta{ color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; font-size:0.82rem; white-space:nowrap; }
+
+  /* ===== FOOTER / CONTACT ===== */
+  footer{
+    background:var(--ink);
+    color:var(--paper);
+    padding:80px 0 40px;
+  }
+  footer h2{ color:var(--paper); font-size:2rem; max-width:16ch; }
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:40px;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(250,250,248,0.15);
+  }
+  .footer-sub{ color:rgba(250,250,248,0.65); margin-top:16px; max-width:40ch; }
+  .contact-list{ list-style:none; margin:0; padding:0; }
+  .contact-list li{ padding:10px 0; }
+  .contact-list a{ text-decoration:none; font-size:1rem; }
+  .contact-list a:hover{ color:var(--gold); }
+  .contact-label{ display:block; font-size:0.78rem; color:rgba(250,250,248,0.5); margin-bottom:2px; }
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:24px;
+    font-size:0.82rem;
+    color:rgba(250,250,248,0.45);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .tool-grid{ grid-template-columns:repeat(4, 1fr); }
+    .stats-row{ grid-template-columns:repeat(2,1fr); row-gap:28px; }
+    .section-head{ grid-template-columns:1fr; gap:10px; }
+    .timeline, .tl-role-col{ grid-template-columns:1fr; }
+    .timeline{ grid-template-columns:1fr; }
+    .tl-meta{ text-align:left; padding-bottom:8px; }
+    .tl-meta::before{ display:none; }
+    .tl-role-col{ padding-left:0; border-left:none; padding-bottom:40px; border-bottom:1px solid var(--line); margin-bottom:24px; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .split{ grid-template-columns:1fr; gap:36px; }
+    .footer-top{ grid-template-columns:1fr; gap:32px; }
+    .nav-links{ display:none; }
+  }
+  @media (max-width: 480px){
+    .wrap{ padding:0 20px; }
+    header.hero{ padding:64px 0 56px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav>
+  <div class="wrap">
+    <span class="nav-name">Prabhakar Joshi</span>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-role">Noida, India</div>
+        <h1 class="headline">Senior Salesforce Engineer</h1>
+        <p class="hero-sub">Senior Salesforce Engineer with 9 years of experience across fintech/payments, healthcare, financial services, education, and real estate, building and delivering scalable Sales, Service, and Health Cloud solutions. Hands-on experience owning solution design and system integrations (AWS S3/Lambda, REST APIs, Platform Events) end-to-end, from requirements through architecture decisions to production support. Strong grounding in Apex, LWC, Flows, and Salesforce security/sharing architecture, with growing exposure to technical leadership and stakeholder-facing roadmap discussions.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#experience">See the work</a>
+          <a class="btn btn-ghost" href="mailto:prabhakarjoshi199@gmail.com">Get in touch</a>
+        </div>
+      </div>
+      <div>
+        <div class="tool-grid" role="list" aria-label="Tools and platforms used">
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">
+              <img src="assets/logos/aws-s3.png" alt="AWS S3" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <span class="tool-glyph-fallback">S3</span>
+            </div>
+            <div class="tool-name">AWS S3</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">
+              <img src="assets/logos/aws-lambda.png" alt="AWS Lambda" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <span class="tool-glyph-fallback">&lambda;</span>
+            </div>
+            <div class="tool-name">AWS Lambda</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">
+              <img src="assets/logos/salesforce.png" alt="Salesforce" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <span class="tool-glyph-fallback">SF</span>
+            </div>
+            <div class="tool-name">Salesforce</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">
+              <img src="assets/logos/apex.png" alt="Apex" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <span class="tool-glyph-fallback">Ax</span>
+            </div>
+            <div class="tool-name">Apex</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">
+              <img src="assets/logos/lightning.png" alt="Lightning Web Components" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <span class="tool-glyph-fallback">LWC</span>
+            </div>
+            <div class="tool-name">Lightning</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">
+              <img src="assets/logos/rest-api.png" alt="REST APIs" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <span class="tool-glyph-fallback">API</span>
+            </div>
+            <div class="tool-name">REST APIs</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">
+              <img src="assets/logos/dataloader.png" alt="Dataloader" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <span class="tool-glyph-fallback">DL</span>
+            </div>
+            <div class="tool-name">Dataloader</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">
+              <img src="assets/logos/jira.png" alt="JIRA" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <span class="tool-glyph-fallback">JR</span>
+            </div>
+            <div class="tool-name">JIRA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="wrap stats-row">
+      <div>
+        <div class="stat-num">9</div>
+        <div class="stat-label">years in Salesforce engineering</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">companies, from consulting to product</div>
+      </div>
+      <div>
+        <div class="stat-num">5</div>
+        <div class="stat-label">industries: payments, healthcare, finance, education, real estate</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Salesforce certifications</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p class="section-note">Four roles, one throughline: taking integration problems from a vague business ask to a system running in production.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-rail-line" aria-hidden="true"></div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <div class="tl-dates">Nov 2022 &mdash; Present</div>
+            <div class="tl-company">PayU Payments</div>
+          </div>
+          <div class="tl-role-col">
+            <div class="tl-role-block">
+              <h3>Senior Software Engineer &mdash; Salesforce</h3>
+              <ul>
+                <li>Designed and delivered an end-to-end bulk pricing upload solution &mdash; CSV processing, AWS S3, AWS Lambda, REST APIs/middleware &mdash; integrating with an external pricing engine. Owned the design decision to use <strong>Salesforce Platform Events</strong> for asynchronous processing, improving scalability.</li>
+                <li>Led the revamp of the legacy pricing configuration architecture, removing objects that were driving unnecessary master data dependencies.</li>
+                <li>Built a pay-mode activation batching feature that let the Banking Operations team review <strong>250&ndash;300 daily requests across 15&ndash;20 banks</strong> in grouped batches &mdash; eliminating manual review and bank emails entirely.</li>
+                <li>Redesigned the Banking Operations UI end-to-end with dynamic search and multi-filter support, cutting search time by <strong>70%</strong>.</li>
+                <li>Acted as escalation point for critical production issues, owning root-cause analysis to keep operations uninterrupted.</li>
+                <li>Reviewed Apex and LWC pull requests across the team, setting the bar for code quality and architectural consistency.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <div class="tl-dates">Mar 2022 &mdash; Nov 2022</div>
+            <div class="tl-company">Deloitte</div>
+          </div>
+          <div class="tl-role-col">
+            <div class="tl-role-block">
+              <h3>Salesforce Consultant</h3>
+              <ul>
+                <li>Designed and supported a Health Cloud implementation managing patient and customer data for a US-based pharmaceutical client.</li>
+                <li>Built a Salesforce&ndash;CMS integration for direct image publishing to the client website, removing a manual step.</li>
+                <li>Led client-facing requirement gathering and sprint demos, keeping business and technical stakeholders aligned for on-time delivery.</li>
+                <li>Owned production support and data migration, maintaining accuracy across releases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <div class="tl-dates">Feb 2021 &mdash; Mar 2022</div>
+            <div class="tl-company">Accenture</div>
+          </div>
+          <div class="tl-role-col">
+            <div class="tl-role-block">
+              <h3>Application Development Senior Analyst</h3>
+              <ul>
+                <li>Designed the end-to-end architecture of an internal process evaluation tool on Salesforce for a major financial-services client.</li>
+                <li>Led technical solution planning and requirement gathering, translating business objectives into a scalable technical roadmap.</li>
+                <li>Ran weekly client demos and feedback loops, accelerating delivery cycles and stakeholder buy-in.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-meta">
+            <div class="tl-dates">Jan 2017 &mdash; Feb 2021</div>
+            <div class="tl-company">TechMatrix Consulting</div>
+          </div>
+          <div class="tl-role-col">
+            <div class="tl-role-block">
+              <h3>Salesforce Developer</h3>
+              <ul>
+                <li>Delivered Salesforce solutions across healthcare, finance, education, and real estate domains, building broad cross-industry implementation experience.</li>
+                <li>Executed legacy-to-Salesforce data migration projects, ensuring data accuracy and integrity throughout.</li>
+                <li>Built foundational expertise in Salesforce Lightning development, establishing the base for advanced customization and automation work in later roles.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <p class="section-note">Grounded in shipping, not just studying &mdash; grouped by where the work actually happens.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Architecture</h3>
+          <div class="skill-tags">
+            <span>Solution &amp; technical architecture</span>
+            <span>Data modeling</span>
+            <span>Sharing &amp; security architecture</span>
+            <span>Technical documentation</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Integration</h3>
+          <div class="skill-tags">
+            <span>REST APIs</span>
+            <span>AWS S3 / Lambda</span>
+            <span>Platform Events</span>
+            <span>Change Data Capture</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Development</h3>
+          <div class="skill-tags">
+            <span>Apex &amp; Async Apex</span>
+            <span>Lightning (Aura / LWC)</span>
+            <span>Visualforce</span>
+            <span>Lightning Message Service</span>
+            <span>SOQL</span>
+            <span>Validation Rules</span>
+            <span>Flows</span>
+            <span>Governor limit optimization</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Platform &amp; Process</h3>
+          <div class="skill-tags">
+            <span>Sales Cloud</span>
+            <span>Service Cloud</span>
+            <span>Experience Cloud</span>
+            <span>Health Cloud</span>
+            <span>Permission Sets &amp; Profiles</span>
+            <span>Sharing Rules</span>
+            <span>Salesforce DX</span>
+            <span>Dataloader / Workbench</span>
+            <span>Agile / JIRA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="wrap split">
+      <div>
+        <h2 style="margin-bottom:24px; font-size:1.5rem;">Certifications</h2>
+        <ul class="cred-list">
+          <li><span class="cred-name">Salesforce Platform Developer I</span></li>
+          <li><span class="cred-name">Salesforce Platform Developer II</span></li>
+          <li><span class="cred-name">Salesforce Platform App Builder</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2 style="margin-bottom:24px; font-size:1.5rem;">Education</h2>
+        <ul class="cred-list">
+          <li>
+            <span class="cred-name">Master's in Computer Application &mdash; DITU, Dehradun</span>
+            <span class="cred-meta">2014&ndash;2016</span>
+          </li>
+          <li>
+            <span class="cred-name">Bachelor's in Computer Application &mdash; IMS, Dehradun</span>
+            <span class="cred-meta">2011&ndash;2014</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <h2>Building the next integration, or reviewing the last one.</h2>
+        <p class="footer-sub">Open to senior and lead Salesforce engineering roles, particularly where integration architecture and payments/fintech experience matter.</p>
+      </div>
+      <ul class="contact-list">
+        <li>
+          <span class="contact-label">Email</span>
+          <a href="mailto:prabhakarjoshi199@gmail.com">prabhakarjoshi199@gmail.com</a>
+        </li>
+        <li>
+          <span class="contact-label">Phone</span>
+          <a href="tel:+919821251708">+91 98212 51708</a>
+        </li>
+        <li>
+          <span class="contact-label">LinkedIn</span>
+          <a href="https://linkedin.com/in/prabhakar-joshi-01550b135" target="_blank" rel="noopener">linkedin.com/in/prabhakar-joshi</a>
+        </li>
+        <li>
+          <span class="contact-label">Location</span>
+          <span>Noida, India</span>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Prabhakar Joshi</span>
+      <span>Built with plain HTML &amp; CSS</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
