@@ -121,18 +121,34 @@
   .btn-ghost{ border-color:var(--line); color:var(--ink); }
   .btn-ghost:hover{ border-color:var(--ink); }
 
-  /* diagram */
-  .flow-diagram{ width:100%; height:auto; }
-  .flow-diagram text{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    fill:var(--ink-soft);
+  /* tool badges */
+  .tool-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
   }
-  .flow-node-label{ fill:var(--ink); font-weight:500; }
-  .flow-line{ stroke:var(--line); stroke-width:1.5; fill:none; }
-  .flow-dot{ fill:var(--teal); }
-  .flow-pulse{
-    fill:var(--gold);
+  .tool-badge{
+    border:1px solid var(--line);
+    background:var(--panel);
+    border-radius:4px;
+    padding:18px 8px;
+    text-align:center;
+  }
+  .tool-glyph{
+    width:38px; height:38px;
+    margin:0 auto 10px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    background:var(--paper);
+    border:1.5px solid var(--teal);
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:0.82rem;
+    color:var(--teal-deep);
+  }
+  .tool-name{
+    font-size:0.78rem;
+    color:var(--ink-soft);
   }
 
   /* ===== STATS ===== */
@@ -313,6 +329,7 @@
   /* ===== RESPONSIVE ===== */
   @media (max-width: 860px){
     .hero-grid{ grid-template-columns:1fr; }
+    .tool-grid{ grid-template-columns:repeat(4, 1fr); }
     .stats-row{ grid-template-columns:repeat(2,1fr); row-gap:28px; }
     .section-head{ grid-template-columns:1fr; gap:10px; }
     .timeline, .tl-role-col{ grid-template-columns:1fr; }
@@ -361,33 +378,40 @@
         </div>
       </div>
       <div>
-        <svg class="flow-diagram" viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a data pipeline: CSV upload flowing through S3, Lambda, Platform Events, into Salesforce.">
-          <path class="flow-line" d="M40,40 L40,110 L190,110" />
-          <path class="flow-line" d="M190,110 L190,180 L40,180" />
-          <path class="flow-line" d="M40,180 L40,250 L190,250" />
-          <path class="flow-line" d="M190,250 L340,250 L340,180" />
-          <path class="flow-line" d="M340,180 L340,110 L190,110" />
-
-          <circle class="flow-dot" cx="40" cy="40" r="5"/>
-          <text x="56" y="36" class="flow-node-label">CSV upload</text>
-          <text x="56" y="50">bulk pricing file</text>
-
-          <circle class="flow-dot" cx="40" cy="180" r="5"/>
-          <text x="56" y="176" class="flow-node-label">AWS S3</text>
-          <text x="56" y="190">object storage</text>
-
-          <circle class="flow-dot" cx="190" cy="110" r="5"/>
-          <text x="206" y="106" class="flow-node-label">AWS Lambda</text>
-          <text x="206" y="120">middleware</text>
-
-          <circle class="flow-pulse" cx="190" cy="250" r="5"/>
-          <text x="206" y="246" class="flow-node-label">Platform Events</text>
-          <text x="206" y="260">async processing</text>
-
-          <circle class="flow-dot" cx="340" cy="180" r="5"/>
-          <text x="264" y="176" class="flow-node-label">Salesforce</text>
-          <text x="264" y="190">pricing engine</text>
-        </svg>
+        <div class="tool-grid" role="list" aria-label="Tools and platforms used">
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">S3</div>
+            <div class="tool-name">AWS S3</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">&lambda;</div>
+            <div class="tool-name">AWS Lambda</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">SF</div>
+            <div class="tool-name">Salesforce</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">Ax</div>
+            <div class="tool-name">Apex</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">LWC</div>
+            <div class="tool-name">Lightning</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">API</div>
+            <div class="tool-name">REST APIs</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">DL</div>
+            <div class="tool-name">Dataloader</div>
+          </div>
+          <div class="tool-badge" role="listitem">
+            <div class="tool-glyph">JR</div>
+            <div class="tool-name">JIRA</div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -396,19 +420,19 @@
     <div class="wrap stats-row">
       <div>
         <div class="stat-num">9</div>
-        <div class="stat-label">years in Salesforce engineering, fintech-focused</div>
+        <div class="stat-label">years in Salesforce engineering</div>
       </div>
       <div>
-        <div class="stat-num">70%</div>
-        <div class="stat-label">faster search after rebuilding the Banking Ops UI</div>
-      </div>
-      <div>
-        <div class="stat-num">250&ndash;300</div>
-        <div class="stat-label">daily bank requests batched instead of handled by hand</div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">companies, from consulting to product</div>
       </div>
       <div>
         <div class="stat-num">5</div>
         <div class="stat-label">industries: payments, healthcare, finance, education, real estate</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Salesforce certifications</div>
       </div>
     </div>
   </div>
