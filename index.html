@@ -181,29 +181,34 @@
     text-align:center;
   }
   .tool-glyph{
-    width:64px; height:64px;
-    margin:0 auto;
-    display:flex; align-items:center; justify-content:center;
-    border-radius:10px;
+    display:inline-flex;
+    align-items:center; justify-content:center;
+    height:56px;
+    min-width:56px;
+    max-width:100%;
+    padding:8px 14px;
+    border-radius:8px;
     background:var(--paper);
     border:1.5px solid var(--teal);
-    padding:8px;
   }
   .tool-logo-img{
-    max-width:100%;
-    max-height:100%;
+    height:100%;
     width:auto;
-    height:auto;
+    max-width:100%;
     object-fit:contain;
   }
   .tool-glyph-fallback{
     display:none;
     align-items:center; justify-content:center;
-    width:100%; height:100%;
+    width:56px; height:100%;
     font-family:'Fraunces', serif;
     font-weight:600;
-    font-size:1.05rem;
+    font-size:1.3rem;
     color:var(--teal-deep);
+  }
+  .tool-glyph-fallback svg{
+    width:26px;
+    height:26px;
   }
 
   /* ===== STATS ===== */
@@ -440,7 +445,7 @@
           <div class="tool-badge" role="listitem">
             <div class="tool-glyph">
               <img src="assets/logos/aws-s3.png" alt="AWS S3" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-              <span class="tool-glyph-fallback">S3</span>
+              <span class="tool-glyph-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l1.4 12.1a1 1 0 001 .9h11.2a1 1 0 001-.9L20 7"/><ellipse cx="12" cy="7" rx="8" ry="2.6"/></svg></span>
             </div>
           </div>
           <div class="tool-badge" role="listitem">
@@ -452,37 +457,37 @@
           <div class="tool-badge" role="listitem">
             <div class="tool-glyph">
               <img src="assets/logos/salesforce.png" alt="Salesforce" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-              <span class="tool-glyph-fallback">SF</span>
+              <span class="tool-glyph-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.8 17.2a4.2 4.2 0 01-.6-8.3 5.2 5.2 0 0110-2 4.6 4.6 0 01-.5 10.3H6.8z"/></svg></span>
             </div>
           </div>
           <div class="tool-badge" role="listitem">
             <div class="tool-glyph">
               <img src="assets/logos/apex.png" alt="Apex" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-              <span class="tool-glyph-fallback">Ax</span>
+              <span class="tool-glyph-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6L3 12l5 6M16 6l5 6-5 6"/></svg></span>
             </div>
           </div>
           <div class="tool-badge" role="listitem">
             <div class="tool-glyph">
               <img src="assets/logos/lightning.png" alt="Lightning Web Components" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-              <span class="tool-glyph-fallback">LWC</span>
+              <span class="tool-glyph-fallback"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
             </div>
           </div>
           <div class="tool-badge" role="listitem">
             <div class="tool-glyph">
               <img src="assets/logos/rest-api.png" alt="REST APIs" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-              <span class="tool-glyph-fallback">API</span>
+              <span class="tool-glyph-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h11l-3.2-3.2M17 16H6l3.2 3.2"/></svg></span>
             </div>
           </div>
           <div class="tool-badge" role="listitem">
             <div class="tool-glyph">
               <img src="assets/logos/dataloader.png" alt="Dataloader" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-              <span class="tool-glyph-fallback">DL</span>
+              <span class="tool-glyph-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v10M8 9l4 4 4-4M4 19h16"/></svg></span>
             </div>
           </div>
           <div class="tool-badge" role="listitem">
             <div class="tool-glyph">
               <img src="assets/logos/jira.png" alt="JIRA" class="tool-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-              <span class="tool-glyph-fallback">JR</span>
+              <span class="tool-glyph-fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
             </div>
           </div>
         </div>
