@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+  (function(){
+    try{
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }catch(e){}
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prabhakar Joshi — Senior Salesforce Engineer</title>
 <meta name="description" content="Senior Salesforce Engineer — 9 years building integration-heavy solutions in fintech, payments, and healthcare.">
@@ -18,6 +27,18 @@
     --teal:#2B6E5E;
     --teal-deep:#1E4F43;
     --gold:#C9A227;
+    --footer-bg:#1A1F2B;
+    --footer-text:#FAFAF8;
+  }
+  html[data-theme="dark"]{
+    --paper:#12161C;
+    --panel:#1A2028;
+    --ink:#EDEBE3;
+    --ink-soft:#A8AEB8;
+    --line:#2A313C;
+    --teal:#4FA98C;
+    --teal-deep:#7FC7AE;
+    --gold:#D9B54A;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -29,6 +50,7 @@
     font-size:16px;
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
+    transition:background .25s ease, color .25s ease;
   }
   h1,h2,h3{
     font-family:'Fraunces', serif;
@@ -59,7 +81,7 @@
   /* ===== NAV ===== */
   nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(250,250,248,0.92);
+    background:color-mix(in srgb, var(--paper) 92%, transparent);
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);
   }
@@ -68,10 +90,34 @@
     padding-top:18px; padding-bottom:18px;
   }
   .nav-name{ font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; }
+  .nav-right{ display:flex; align-items:center; gap:28px; }
   .nav-links{ display:flex; gap:28px; list-style:none; margin:0; padding:0; }
   .nav-links a{ text-decoration:none; font-size:0.92rem; color:var(--ink-soft); transition:color .15s; }
   .nav-links a:hover{ color:var(--teal-deep); }
-  .nav-toggle{ display:none; }
+
+  /* theme toggle */
+  .theme-toggle{
+    position:relative;
+    width:44px; height:24px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--panel);
+    cursor:pointer;
+    padding:0;
+    flex-shrink:0;
+  }
+  .theme-toggle::after{
+    content:'';
+    position:absolute;
+    top:2px; left:2px;
+    width:18px; height:18px;
+    border-radius:50%;
+    background:var(--teal);
+    transition:transform .2s ease;
+  }
+  html[data-theme="dark"] .theme-toggle::after{
+    transform:translateX(20px);
+  }
 
   /* ===== HERO ===== */
   header.hero{
@@ -303,11 +349,11 @@
 
   /* ===== FOOTER / CONTACT ===== */
   footer{
-    background:var(--ink);
-    color:var(--paper);
+    background:var(--footer-bg);
+    color:var(--footer-text);
     padding:80px 0 40px;
   }
-  footer h2{ color:var(--paper); font-size:2rem; max-width:16ch; }
+  footer h2{ color:var(--footer-text); font-size:2rem; max-width:16ch; }
   .footer-top{
     display:grid;
     grid-template-columns:1.2fr 0.8fr;
@@ -364,12 +410,15 @@
 <nav>
   <div class="wrap">
     <span class="nav-name">Prabhakar Joshi</span>
-    <ul class="nav-links">
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#credentials">Credentials</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false"></button>
+    </div>
   </div>
 </nav>
 
@@ -665,5 +714,23 @@
   </div>
 </footer>
 
+<script>
+  (function(){
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    function sync(theme){
+      btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+    }
+    sync(root.getAttribute('data-theme') || 'light');
+    btn.addEventListener('click', function(){
+      var current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try{ localStorage.setItem('theme', next); }catch(e){}
+      sync(next);
+    });
+  })();
+</script>
 </body>
 </html>
